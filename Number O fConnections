@@ -1,0 +1,19 @@
+![alt text](https://www.1point3acres.com/bbs/plugin.php?id=attachcenter:goto&aid=NDE2MDYyfDJmYjg3ZDZlfDE2Mzk5ODY5Njh8NjcwOTgzfDc5NzE2OQ%3D%3D&nothumb=yes)
+
+
+
+def numberOfConnections(grid):
+    def nOnes(arr):
+        cnt = 0
+        for i in arr:
+            if i: cnt += 1
+        return cnt
+    res = 0
+    prevNOnes = 0
+    for row in grid:
+        if any(row):
+            curNOnes = nOnes(row)
+            if prevNOnes:
+                res += prevNOnes * curNOnes
+            prevNOnes = curNOnes
+    return res
