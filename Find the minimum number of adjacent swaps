@@ -1,0 +1,53 @@
+Sort 1's and 0's in array to the end. Either end is fine.
+Find the minimum number of adjacent swaps required to sort.
+
+Input:
+[1,1,1,0,0,0]
+
+output:
+0
+Input:
+[0,0,0,1,1,1]
+
+output:
+0
+Input:
+[0,0,0,0,1,0,1,0,0]
+
+output:
+5
+Input:
+[0,0,1,0,1,0]
+
+output:
+3
+My solution:
+def findMinSwaps(arr):
+    nSwaps, nOnes = 0, 0
+    for c in arr:
+        if c == 0:
+            nSwaps += nOnes
+        else:
+            nOnes += 1
+    #print (nSwaps, nOnes)
+    nSwaps1, nOnes1 = 0, 0
+    for c in arr[::-1]:
+        if c == 0:
+            nSwaps1 += nOnes1
+        else:
+            nOnes1 += 1
+    #print (nSwaps1, nOnes1)
+    return min(nSwaps, nSwaps1)
+
+Others' solution
+
+def countMovesToLeft(nums, target):
+	count = 0
+	last = 0
+	for i in range(len(nums)):
+		if nums[i] == target:
+			count += i - last
+			last += 1
+	return count
+        
+return min(countMovesToLeft(nums, 1), countMovesToLeft(nums, 0))
